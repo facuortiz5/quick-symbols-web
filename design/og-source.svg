@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="wash" cx="0" cy="0" r="1" gradientTransform="translate(1025 60) rotate(145) scale(520 410)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6366F1" stop-opacity=".18" />
+      <stop offset="1" stop-color="#6366F1" stop-opacity="0" />
+    </radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#172033" flood-opacity=".16" />
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="#F7F8FC" />
+  <rect width="1200" height="630" fill="url(#wash)" />
+
+  <g fill="#4F46E5" font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <text x="1030" y="138" font-size="74" opacity=".4">π</text>
+    <text x="918" y="520" font-size="58" opacity=".34">∞</text>
+    <text x="1090" y="382" font-size="66" opacity=".28">Ω</text>
+    <text x="770" y="118" font-size="50" opacity=".3">√</text>
+    <text x="752" y="544" font-size="52" opacity=".26">♫</text>
+    <text x="1130" y="570" font-size="47" opacity=".25">→</text>
+    <text x="872" y="300" font-size="84" opacity=".15">Ñ</text>
+  </g>
+
+  <image
+    x="92"
+    y="92"
+    width="112"
+    height="112"
+    filter="url(#shadow)"
+    href="data:image/png;base64,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"
+  />
+
+  <text x="92" y="352" fill="#172033" font-family="Arial, sans-serif" font-size="82" font-weight="750" letter-spacing="-3">Quick Symbols</text>
+  <text x="96" y="418" fill="#626B80" font-family="Arial, sans-serif" font-size="31" font-weight="500">Every symbol, one click away.</text>
+</svg>
