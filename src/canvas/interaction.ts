@@ -15,6 +15,7 @@ export class CanvasInteraction {
   readonly #scene: SymbolScene;
   readonly #onActivate: (activation: SymbolActivation) => Promise<void>;
   readonly #onSelectionChange: (selection: SymbolSelection) => void;
+  readonly #hoverQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
   #enabled = true;
   #pressedId: number | null = null;
   #activePointerId: number | null = null;
@@ -65,6 +66,11 @@ export class CanvasInteraction {
 
   readonly #handlePointerMove = (event: PointerEvent): void => {
     if (!this.#enabled) return;
+    if (!this.#canHover(event)) {
+      this.#scene.setHovered(null);
+      this.#canvas.style.cursor = "default";
+      return;
+    }
     const point = this.#toCanvasPoint(event);
     const hitId = point
       ? this.#scene.hitTest(point.x, point.y, event.pointerType)
@@ -79,7 +85,7 @@ export class CanvasInteraction {
     this.#pressedId = point
       ? this.#scene.hitTest(point.x, point.y, event.pointerType)
       : null;
-    this.#scene.setHovered(this.#pressedId);
+    this.#scene.setHovered(this.#canHover(event) ? this.#pressedId : null);
     this.#scene.setPressed(this.#pressedId);
     if (this.#pressedId === null) return;
 
@@ -104,6 +110,11 @@ export class CanvasInteraction {
     this.#activePointerId = null;
     this.#scene.setPressed(null);
 
+    if (!this.#canHover(event)) {
+      this.#scene.setHovered(null);
+      this.#canvas.style.cursor = "default";
+    }
+
     if (this.#canvas.hasPointerCapture(event.pointerId)) {
       this.#canvas.releasePointerCapture(event.pointerId);
     }
@@ -116,6 +127,7 @@ export class CanvasInteraction {
     this.#pressedId = null;
     this.#activePointerId = null;
     this.#scene.setPressed(null);
+    if (!this.#canHover(event)) this.#scene.setHovered(null);
   };
 
   readonly #handlePointerLeave = (): void => {
@@ -177,6 +189,10 @@ export class CanvasInteraction {
 
   #toCanvasPoint(event: PointerEvent): { x: number; y: number } | null {
     return this.#scene.clientPointToLocal(event.clientX, event.clientY);
+  }
+
+  #canHover(event: PointerEvent): boolean {
+    return event.pointerType === "mouse" && this.#hoverQuery.matches;
   }
 
   #releaseActivePointer(): void {

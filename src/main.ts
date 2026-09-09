@@ -4,8 +4,19 @@ import { SymbolScene, type ScenePalette } from "./canvas/scene";
 import { CHROME_STORE_URL, COPY_TARGET_PER_CYCLE, UI_TEXT } from "./config";
 import { copyToClipboard } from "./ui/clipboard";
 import { ConversionModal } from "./ui/modal";
-import { ThemeController } from "./ui/theme";
+import { ThemeController, type Theme } from "./ui/theme";
 import { CopyToast } from "./ui/toast";
+
+const SCENE_PALETTES = {
+  day: {
+    symbol: "#5148e7",
+    symbolHover: "#3730a3",
+  },
+  night: {
+    symbol: "#adb1ff",
+    symbolHover: "#ffffff",
+  },
+} as const satisfies Record<Theme, ScenePalette>;
 
 const canvas = requireElement("symbol-canvas", HTMLCanvasElement);
 const themeButton = requireElement("theme-toggle", HTMLButtonElement);
@@ -17,10 +28,10 @@ const extensionLink = requireElement("extension-link", HTMLAnchorElement);
 extensionLink.href = CHROME_STORE_URL;
 
 let scene: SymbolScene | null = null;
-const theme = new ThemeController(themeButton, () => {
-  scene?.setPalette(readScenePalette());
+const theme = new ThemeController(themeButton, (activeTheme) => {
+  scene?.setPalette(scenePaletteFor(activeTheme));
 });
-scene = new SymbolScene(canvas, themeButton, readScenePalette());
+scene = new SymbolScene(canvas, themeButton, scenePaletteFor(theme.current));
 
 const toast = new CopyToast(statusElement);
 let copiedInCycle = 0;
@@ -81,12 +92,8 @@ window.addEventListener(
   { once: true },
 );
 
-function readScenePalette(): ScenePalette {
-  const styles = getComputedStyle(document.documentElement);
-  return {
-    symbol: styles.getPropertyValue("--symbol").trim(),
-    symbolHover: styles.getPropertyValue("--symbol-hover").trim(),
-  };
+function scenePaletteFor(theme: Theme): ScenePalette {
+  return SCENE_PALETTES[theme];
 }
 
 function requireElement<T extends Element>(id: string, constructor: { new (): T }): T {

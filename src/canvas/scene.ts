@@ -192,6 +192,7 @@ export class SymbolScene {
     for (const particle of this.#particles) {
       if (particle.id === id) particle.targetScale = 0.9;
       else if (particle.id === this.#hoveredId) particle.targetScale = 1.13;
+      else particle.targetScale = 1;
     }
   }
 
@@ -199,7 +200,9 @@ export class SymbolScene {
     const particle = this.#particles.find((candidate) => candidate.id === id);
     if (!particle) return;
     particle.pulse = 1;
-    particle.targetScale = 1.16;
+    if (particle.id === this.#pressedId) particle.targetScale = 0.9;
+    else if (particle.id === this.#hoveredId) particle.targetScale = 1.13;
+    else particle.targetScale = 1;
   }
 
   pause(reason: string): void {

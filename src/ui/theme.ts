@@ -17,6 +17,10 @@ export class ThemeController {
     button.addEventListener("click", this.#toggle);
   }
 
+  get current(): Theme {
+    return this.#theme;
+  }
+
   destroy(): void {
     this.#button.removeEventListener("click", this.#toggle);
   }
