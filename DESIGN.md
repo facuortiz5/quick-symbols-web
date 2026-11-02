@@ -181,7 +181,7 @@ The `ñ°` browser and dialog mark is derived deterministically from the extensi
 
 ### Conversion Card
 
-- **Composition:** Product lockup, the single title “Want more symbols?”, and one action—no supporting sentence or decorative arrow.
+- **Composition:** Product lockup, the title “Want more symbols?”, the compact line “Bilingual search · Favorites · Any tab”, and one action. The benefit line occupies the existing title-to-button gap so the card keeps its dimensions.
 - **Behavior:** It appears only on the third successful copy in a cycle, pauses the field, takes focus, and resets the cycle when dismissed.
 - **Material:** Opaque themed surface, 16px corners, centered layout, ambient shadow, and functional backdrop blur.
 

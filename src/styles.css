@@ -253,12 +253,20 @@ canvas {
 
 .conversion-card h1 {
   max-width: 12ch;
-  margin: 0 auto 32px;
+  margin: 0 auto 8px;
   color: var(--ink);
   font-size: clamp(2rem, 8vw, 3rem);
   line-height: 1;
   letter-spacing: -0.035em;
   text-wrap: balance;
+}
+
+.conversion-benefits {
+  margin: 0 auto 10px;
+  color: var(--muted);
+  font-size: clamp(10px, 2.8vw, 12px);
+  line-height: 14px;
+  white-space: nowrap;
 }
 
 .extension-link {

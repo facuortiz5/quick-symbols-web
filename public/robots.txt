@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://quicksymbols.example/sitemap.xml
+Sitemap: https://quick-symbols-web.vercel.app/sitemap.xml
