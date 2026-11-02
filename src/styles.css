@@ -223,7 +223,7 @@ canvas {
 }
 
 .conversion-card {
-  padding: clamp(28px, 7vw, 42px);
+  padding: clamp(18px, calc(7vw - 10px), 32px) clamp(28px, 7vw, 42px);
   text-align: center;
   background: var(--surface);
   border-radius: 16px;
@@ -234,7 +234,7 @@ canvas {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin: 0 auto 20px;
+  margin: 0 auto 16px;
 }
 
 .conversion-mark {
@@ -253,7 +253,7 @@ canvas {
 
 .conversion-card h1 {
   max-width: 12ch;
-  margin: 0 auto 8px;
+  margin: 0 auto 16px;
   color: var(--ink);
   font-size: clamp(2rem, 8vw, 3rem);
   line-height: 1;
@@ -262,7 +262,7 @@ canvas {
 }
 
 .conversion-benefits {
-  margin: 0 auto 10px;
+  margin: 0 auto 26px;
   color: var(--muted);
   font-size: clamp(10px, 2.8vw, 12px);
   line-height: 14px;
@@ -327,11 +327,15 @@ canvas {
   }
 
   .conversion-card {
-    padding: 30px 24px 24px;
+    padding: 24px 24px 18px;
   }
 
   .conversion-lockup {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+  }
+
+  .conversion-benefits {
+    margin-bottom: 18px;
   }
 }
 

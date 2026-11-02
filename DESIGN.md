@@ -181,7 +181,7 @@ The `ñ°` browser and dialog mark is derived deterministically from the extensi
 
 ### Conversion Card
 
-- **Composition:** Product lockup, the title “Want more symbols?”, the compact line “Bilingual search · Favorites · Any tab”, and one action. The benefit line occupies the existing title-to-button gap so the card keeps its dimensions.
+- **Composition:** Product lockup, the title “Want more symbols?”, the compact line “Bilingual search · Favorites · Any tab”, and one action. The lockup and heading sit higher, with 16px between heading and benefits and 26px before the button (18px on mobile). Reduced outer padding preserves the card dimensions: 440×330px on desktop, 268px tall at a 390px viewport.
 - **Behavior:** It appears only on the third successful copy in a cycle, pauses the field, takes focus, and resets the cycle when dismissed.
 - **Material:** Opaque themed surface, 16px corners, centered layout, ambient shadow, and functional backdrop blur.
 
